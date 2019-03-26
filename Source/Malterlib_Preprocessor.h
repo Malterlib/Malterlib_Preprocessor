@@ -22,7 +22,6 @@
 #    define BOOST_PP_STRINGIZEU8(text) BOOST_PP_STRINGIZEU8_A((text))
 #    define BOOST_PP_STRINGIZEU8_A(arg) BOOST_PP_STRINGIZEU8_I arg
 #	define BOOST_PP_STRINGIZEU8_I(text) u8#text
-#	define DMibStringizeUTF8 BOOST_PP_STRINGIZEU8
 # else
 #    define BOOST_PP_STRINGIZEU8(text) BOOST_PP_STRINGIZEU8_I(text)
 #	define BOOST_PP_STRINGIZEU8_I(text) BOOST_PP_CAT(u8,#text)
