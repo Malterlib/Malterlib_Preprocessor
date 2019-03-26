@@ -1,4 +1,4 @@
-﻿// Copyright © 2015 Hansoft AB 
+// Copyright © 2015 Hansoft AB 
 // Distributed under the MIT license, see license text in LICENSE.Malterlib
 
 #pragma once
@@ -29,7 +29,12 @@
 # endif
 #
 
-#define DMibStringizeUTF8 BOOST_PP_STRINGIZEU8
+#ifdef DCompiler_MSVC
+#	define DMibStringizeUTF8 BOOST_PP_STRINGIZEU8
+#else
+#	define DMibStringizeUTF8 BOOST_PP_STRINGIZE
+#endif
+
 #define DMibStringize BOOST_PP_STRINGIZE
 //DMibStringizeHelper(_Tokens)
 #define DMibStringizeHelper(_Tokens) #_Tokens
