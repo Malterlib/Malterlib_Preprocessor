@@ -7,9 +7,9 @@ Property.MalterlibBoostModules "preprocessor;@(MalterlibBoostModules)"
 
 %Group "{Malterlib}/{Lib_Malterlib_Preprocessor}"
 {
-	%Group Preprocessor
+	%Group "Preprocessor"
 	{
-		%Group Include
+		%Group "Include"
 		{
 			Compile.Type "C++"
 			{
@@ -18,7 +18,7 @@ Property.MalterlibBoostModules "preprocessor;@(MalterlibBoostModules)"
 			%File "Include/Mib/Preprocessor/^*"
 		}
 		%File "Source/^*"
-		%Group Documentation
+		%Group "Documentation"
 		{
 			%File "Documentation/*"
 		}
