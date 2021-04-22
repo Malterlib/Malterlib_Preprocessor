@@ -3,7 +3,7 @@
 
 Import "../Core/Lib_Malterlib.MTarget"
 
-Property.MalterlibBoostModules "preprocessor;@(MalterlibBoostModules)"
+Property.MalterlibBoostModules =+ "preprocessor"
 
 %Group "{Malterlib}/{Lib_Malterlib_Preprocessor}"
 {
@@ -27,20 +27,13 @@ Property.MalterlibBoostModules "preprocessor;@(MalterlibBoostModules)"
 
 Property
 {
-	MalterlibLibrary_Preprocessor true
-	{
-		&
-		{
-			MalterlibLibrary_Preprocessor ""
-			MalterlibLibrary_All true
-		}
-	}
-	MalterlibSubLibraries "Preprocessor;@(MalterlibSubLibraries)"
+	MalterlibLibrary_Preprocessor define bool = MalterlibLibrary_All
+	MalterlibSubLibraries =+ "Preprocessor"
 	{
 		!!MalterlibLibrary_Preprocessor true
 	}
-//	MalterlibSubLibrarySeparate_Lib_Malterlib_Preprocessor true
-	MalterlibIncludeRoots "@('Include'->MakeAbsolute());@(MalterlibIncludeRoots)"
+//	MalterlibSubLibrarySeparate_Lib_Malterlib_Preprocessor define bool = true
+	MalterlibIncludeRoots =+ "Include"->MakeAbsolute()
 	{
 		!!MalterlibLibrary_Preprocessor true
 	}
@@ -50,7 +43,7 @@ Property
 {
 	!!MalterlibEnableInternalTests true
 	
-	MalterlibTests "Malterlib_Preprocessor;@(MalterlibTests)"
-	//MalterlibTestFiles_Malterlib_Preprocessor "@('Test/*'->MakeAbsolute())"
+	MalterlibTests =+ "Malterlib_Preprocessor"
+	//MalterlibTestFiles_Malterlib_Preprocessor define [type(CEntity)] = ["Test/*"->MakeAbsolute()]
 }
 
