@@ -27,12 +27,12 @@ Property.MalterlibBoostModules =+ "preprocessor"
 
 Property
 {
-	MalterlibLibrary_Preprocessor define bool = MalterlibLibrary_All
+	MalterlibLibrary_Preprocessor: bool = MalterlibLibrary_All
 	MalterlibSubLibraries =+ "Preprocessor"
 	{
 		!!MalterlibLibrary_Preprocessor true
 	}
-//	MalterlibSubLibrarySeparate_Lib_Malterlib_Preprocessor define bool = true
+//	MalterlibSubLibrarySeparate_Lib_Malterlib_Preprocessor: bool = true
 	MalterlibIncludeRoots =+ "Include"->MakeAbsolute()
 	{
 		!!MalterlibLibrary_Preprocessor true
@@ -44,6 +44,6 @@ Property
 	!!MalterlibEnableInternalTests true
 	
 	MalterlibTests =+ "Malterlib_Preprocessor"
-	//MalterlibTestFiles_Malterlib_Preprocessor define [type(CEntity)] = ["Test/*"->MakeAbsolute()]
+	//MalterlibTestFiles_Malterlib_Preprocessor: [type(CEntity)] = ["Test/*"->MakeAbsolute()]
 }
 
