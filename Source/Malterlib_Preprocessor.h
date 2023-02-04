@@ -3,30 +3,28 @@
 
 #pragma once
 
-#include <boost/preprocessor/cat.hpp>
-#include <boost/preprocessor/stringize.hpp>
-
-# if BOOST_PP_CONFIG_FLAGS() & BOOST_PP_CONFIG_MSVC()
-#    define BOOST_PP_STRINGIZEU8(text) BOOST_PP_STRINGIZEU8_A((text))
-#    define BOOST_PP_STRINGIZEU8_A(arg) BOOST_PP_STRINGIZEU8_I arg
-#	define BOOST_PP_STRINGIZEU8_I(text) u8#text
-# else
-#    define BOOST_PP_STRINGIZEU8(text) BOOST_PP_STRINGIZEU8_I(text)
-#	define BOOST_PP_STRINGIZEU8_I(text) BOOST_PP_CAT(u8,#text)
-# endif
-#
-
 #ifdef DCompiler_MSVC
-#	define DMibStringizeUTF8 BOOST_PP_STRINGIZEU8
+#	define DMibConcatenate_Helper1(d_Left, d_Right) DMibConcatenate_Helper2(~, d_Left ## d_Right)
+#	define DMibConcatenate_Helper2(d_Dummy, d_Result) d_Result
 #else
-#	define DMibStringizeUTF8 BOOST_PP_STRINGIZE
+#	define DMibConcatenate_Helper1(d_Left, d_Right) d_Left ## d_Right
 #endif
 
-#define DMibStringize BOOST_PP_STRINGIZE
-//DMibStringizeHelper(_Tokens)
-#define DMibStringizeHelper(_Tokens) #_Tokens
+#define DMibConcatenate(d_Left, d_Right) DMibConcatenate_Helper1(d_Left, d_Right)
 
-#define DMibConcatenate BOOST_PP_CAT
-//DMibConcatenateHelper1( _Left, _Right )
-#define DMibConcatenateHelper1( _Left, _Right ) DMibConcatenateHelper2(_Left,_Right)
-#define DMibConcatenateHelper2( _Left, _Right ) _Left##_Right
+#define DMibStringize_Helper1(...) #__VA_ARGS__
+
+#ifdef DCompiler_MSVC
+#	define DMibStringize(d_ToStringize) DMibStringize_Helper2((d_ToStringize))
+#	define DMibStringize_Helper2(d_Result) p. d_Result
+#else
+#	define DMibStringize(d_ToStringize) DMibStringize_Helper1(d_ToStringize)
+#endif
+
+#ifdef DCompiler_MSVC
+#	define DMibStringizeUTF8(d_ToStringize) DMibStringizeUTF8_Helper2((d_ToStringize))
+#	define DMibStringizeUTF8_Helper2(d_Result) DMibStringizeUTF8_Helper1 d_Result
+#	define DMibStringizeUTF8_Helper1(d_ToStringize) u8#d_ToStringize
+#else
+#	define DMibStringizeUTF8 DMibStringize
+#endif
