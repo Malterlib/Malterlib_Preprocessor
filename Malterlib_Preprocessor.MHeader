@@ -3,11 +3,6 @@
 
 Import "../Core/Lib_Malterlib.MTarget"
 
-Property.MalterlibBoostModules =+ "preprocessor"
-{
-	!!MalterlibEnableInternalTests true
-}
-
 %Group "{Malterlib}/{Lib_Malterlib_Preprocessor}"
 {
 	%Group "Preprocessor"
